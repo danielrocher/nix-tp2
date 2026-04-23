@@ -134,8 +134,10 @@ curl 192.168.122.10
 ```bash
 # check before
 nix run github:serokell/deploy-rs -- --dry-activate github:danielrocher/nix-tp2#webserver1
-# nix run github:serokell/deploy-rs -- --dry-activate github:danielrocher/nix-tp2#webserver1 -- --no-write-lock-file
 nix run github:serokell/deploy-rs -- github:danielrocher/nix-tp2#webserver1
+
+# sur une branche particulier
+nix run github:serokell/deploy-rs -- github:danielrocher/nix-tp2/develop#webserver1
 ```
 
 ## Extra

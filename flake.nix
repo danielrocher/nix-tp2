@@ -58,14 +58,13 @@
   in {
     # Définition des machines
     nixosConfigurations = builtins.mapAttrs
-      (_:    mkHost) machines;
+      (_: mkHost) machines;
 
     # Cibles de déploiement (deploy-rs)
     deploy.nodes = builtins.mapAttrs
       (name: mkNode name) machines;
 
     # Vérification des déploiements
-    checks.${system} =
-      deploy-rs.lib.${system}.deployChecks self.deploy;
+    checks.${system} = deploy-rs.lib.${system}.deployChecks self.deploy;
   };
 }

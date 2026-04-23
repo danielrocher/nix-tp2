@@ -27,11 +27,13 @@
     shell = pkgs.bash;
   };
 
-  # Message d'accueil à la connexion SSH
+  # Message d'accueil
   programs.bash.interactiveShellInit = ''
-    echo "+-------------------------------+"
+    uname -snrvm
+    echo "Uptime:$(uptime)"
+    echo
     echo "   Client Console - Parc NixOS"
-    echo "+-------------------------------+"
+    echo
     echo " Authorized users only. All activity may be monitored and reported."
   '';
 }

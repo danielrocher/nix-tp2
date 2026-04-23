@@ -134,9 +134,11 @@ curl 192.168.122.10
 ```bash
 # check before
 nix run github:serokell/deploy-rs -- --dry-activate github:danielrocher/nix-tp2#webserver1
+# deploie sur la machine webserver1, à partir du depot git
 nix run github:serokell/deploy-rs -- github:danielrocher/nix-tp2#webserver1
-
-# sur une branche particulier
+# ou bien à partir d'un chemin local
+nix run github:serokell/deploy-rs -- /mnt/partage_vm/tp2/#webserver1
+# à partir de git sur une branche particulier (develop)
 nix run github:serokell/deploy-rs -- github:danielrocher/nix-tp2/develop#webserver1
 ```
 
@@ -147,15 +149,10 @@ nix run github:serokell/deploy-rs -- github:danielrocher/nix-tp2/develop#webserv
 Permet de figer les paquets à une version
 
 ```bash
-git clone http://192.168.122.1:8000/parc-nix.git
+git clone git@github.com:danielrocher/nix-tp2.git
 nix flake update
 git add flake.lock
 git commit -a -m "feat: added flake.lock"
-```
-
-### Mettre à jour le dépôt (sinon utilisation du cache)
-```bash
-sudo nix flake update --flake "github:danielrocher/nix-tp2"
 ```
 
 ### Vider le cache

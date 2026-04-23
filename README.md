@@ -130,6 +130,7 @@ curl 192.168.122.10
 
 ## deploy-rs
 
+À partir du poste d'administration :
 ```bash
 # check before
 nix run github:serokell/deploy-rs -- --dry-activate github:danielrocher/nix-tp2#webserver1

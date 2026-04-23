@@ -8,6 +8,7 @@
       AllowTcpForwarding = false;
       AllowAgentForwarding = false;
       X11Forwarding = false;
+      PrintLastLog = true;
     };
     ports = [ 2222 ];
   };

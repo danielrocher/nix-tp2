@@ -17,7 +17,7 @@ wget https://channels.nixos.org/nixos-25.11/latest-nixos-graphical-x86_64-linux.
 
 virt-install --name nixos-admin \
   --memory 8192 --vcpus 4 \
-  --disk size=40 \
+  --disk size=80 \
   --cdrom latest-nixos-graphical-x86_64-linux.iso \
   --os-variant nixos-unstable \
   --network network=default,model=virtio \
@@ -26,7 +26,7 @@ virt-install --name nixos-admin \
   --noautoconsole
 ```
 
-Une fois l'installation terminé, dans la VM d'administration :
+Une fois l'installation terminée, dans la VM d'administration :
 ```bash
 # Générer une paire de clés SSH pour l'administration
 ssh-keygen -o -a 256 -t ed25519 -f ~/.ssh/id_ed25519 -C "admin@ci"
@@ -76,13 +76,13 @@ virt-install --name webserver1 \
 ```
 
 
-Configurer le premier poste client (client1)
+Configurer le premier poste client (client1) :
 ```bash
 sudo loadkeys fr
 passwd # définir un mot de passe temporaire pour installation
 
 # Depuis mon poste
-ssh nixos@192.168.122.xxx
+ssh nixos@192.168.222.xxx
 
 sudo mkdir -p /root/.config/nix/
 echo "experimental-features = nix-command flakes" | sudo tee /root/.config/nix/nix.conf
@@ -106,7 +106,7 @@ sudo nix-env --list-generations --profile /nix/var/nix/profiles/system
 
 # reboot et connexion avec nouveau compte
 sudo reboot
-ssh -p 2222 admin@192.168.122.20
+ssh -p 2222 admin@192.168.222.20
 ...
 ```
 
@@ -122,10 +122,10 @@ sudo nixos-install \
   --flake github:danielrocher/nix-tp2#webserver1 \
   --no-root-passwd
 ...
-ssh -p 2222 admin@192.168.122.10
+ssh -p 2222 admin@192.168.222.10
 
 # Vérification
-curl 192.168.122.10
+curl 192.168.222.10
 ```
 
 ## deploy-rs
@@ -169,5 +169,5 @@ cd parc-nix.git/
 git fetch origin main:main
 git update-server-info
 cd ..
-python3 -m http.server -b 192.168.122.1 8000
+python3 -m http.server -b 192.168.222.1 8000
 ```

@@ -20,10 +20,10 @@
 
     # Table centrale des machines
     machines = {
-      webserver1 = { ip = "192.168.122.10"; hostname = "webserver1"; module = ./machines/webserver.nix; };
-      webserver2 = { ip = "192.168.122.11"; hostname = "webserver2"; module = ./machines/webserver.nix; };
-      client1   = { ip = "192.168.122.20"; hostname = "client1";   module = ./machines/client.nix; };
-      client2   = { ip = "192.168.122.21"; hostname = "client2";   module = ./machines/client.nix; };
+      webserver1 = { ip = "192.168.222.10"; hostname = "webserver1"; module = ./machines/webserver.nix; };
+      webserver2 = { ip = "192.168.222.11"; hostname = "webserver2"; module = ./machines/webserver.nix; };
+      client1   = { ip = "192.168.222.20"; hostname = "client1";   module = ./machines/client.nix; };
+      client2   = { ip = "192.168.222.21"; hostname = "client2";   module = ./machines/client.nix; };
     };
 
     # Modules communs à toutes les machines
